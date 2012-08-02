@@ -10,3 +10,4 @@ Tools
 -----
 * DbVisualizer: http://www.dbvis.com/
 * Rebar: https://github.com/basho/rebar/
+* WebMachine: http://wiki.basho.com/Webmachine.html
