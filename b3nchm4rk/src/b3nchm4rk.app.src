@@ -1,0 +1,18 @@
+%%-*- mode: erlang -*-
+{application, b3nchm4rk,
+ [
+  {description, "b3nchm4rk"},
+  {vsn, "1"},
+  {modules, []},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  inets,
+                  crypto,
+                  mochiweb,
+                  webmachine
+                 ]},
+  {mod, { b3nchm4rk_app, []}},
+  {env, []}
+ ]}.
