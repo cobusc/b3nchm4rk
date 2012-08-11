@@ -1,6 +1,6 @@
 @setlocal
 
-@set node_name=node
+@set node_name=b3nchm4rk
 
 @rem Get the abolute path to the parent directory,
 @rem which is assumed to be the node root.

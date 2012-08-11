@@ -1,8 +1,8 @@
 ## Name of the node
--name node@127.0.0.1
+-name b3nchm4rk@127.0.0.1
 
 ## Cookie for distributed erlang
--setcookie node
+-setcookie b3nchm4rk
 
 ## Heartbeat management; auto-restarts VM if it dies or becomes unresponsive
 ## (Disabled by default..use with caution!)
