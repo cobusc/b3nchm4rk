@@ -3,7 +3,7 @@ APP := b3nchm4rk
 
 .PHONY: deps
 
-all: deps
+all: deps ctags
 	@./rebar compile
 
 deps:
@@ -14,6 +14,9 @@ clean:
 
 release:
 	@./rebar --force generate
+
+ctags:
+	- ctags -R
 
 distclean: clean
 	@./rebar delete-deps
