@@ -13,13 +13,20 @@ init(Config) ->
     %%enable tracing the decision core for debugging
     {{trace, "traces"}, Config}.
               
-content_types_provided(RD, Ctx) ->
-    {[ {"text/html", to_html} ], RD, Ctx}.
+content_types_provided(ReqData, Context) ->
+    {[ {"text/html", to_html}, 
+       {"application/json", to_json}
+     ], ReqData, Context}.
 
-allowed_methods(RD, Ctx) ->
-    {['GET', 'HEAD'], RD, Ctx}.
+allowed_methods(ReqData, Context) ->
+    {['GET', 'HEAD'], ReqData, Context}.
                     
-to_html(RD, Ctx) ->
-    Id = wrq:path_info(id, RD),
+to_html(ReqData, Context) ->
+    Id = wrq:path_info(id, ReqData),
     Resp = "<html><body>" ++ Id ++ "</body></html>",
-    {Resp, RD, Ctx}.
+    {Resp, ReqData, Context}.
+
+to_json(ReqData, Context) ->
+     Id = wrq:path_info(id, ReqData),
+     Resp = mochijson:encode({struct, [{"Id", Id}]}),
+     {Resp, ReqData, Context}.
