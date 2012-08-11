@@ -12,6 +12,9 @@ deps:
 clean:
 	@./rebar clean
 
+release:
+	@./rebar --force generate
+
 distclean: clean
 	@./rebar delete-deps
 
