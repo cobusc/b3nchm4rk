@@ -12,7 +12,7 @@ deps:
 clean:
 	@./rebar clean
 
-release:
+release: all
 	@./rebar --force generate
 
 ctags:
