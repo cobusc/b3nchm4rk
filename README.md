@@ -11,3 +11,4 @@ Tools
 * DbVisualizer: http://www.dbvis.com/
 * Rebar: https://github.com/basho/rebar/
 * WebMachine: http://wiki.basho.com/Webmachine.html
+* Nitrogen Web Framework: http://nitrogenproject.com/doc/index.html
