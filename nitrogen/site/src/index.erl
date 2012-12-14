@@ -26,10 +26,10 @@ inner_body() ->
         "
         Run <b>./bin/dev help</b> to see some useful developer commands.
         ",
-		#p{},
-		"
-		<b>Want to see the ",#link{text="Sample Nitrogen jQuery Mobile Page",url="/mobile"},"?</b>
-		"
+	#p{},
+	"
+	<b>Want to see the ",#link{text="Sample Nitrogen jQuery Mobile Page",url="/mobile"},"?</b>
+	"
     ].
 	
 event(click) ->
