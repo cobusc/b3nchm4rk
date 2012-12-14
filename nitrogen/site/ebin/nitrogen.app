@@ -7,4 +7,5 @@
               {env,[]},
               {modules,[index,mobile,nitrogen_app,nitrogen_init,nitrogen_sup,
                         nitrogen_webmachine,static_resource,
-                        static_route_handler]}]}.
+                        static_route_handler,user_login,user_logout,
+                        user_profile,user_register]}]}.
