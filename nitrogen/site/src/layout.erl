@@ -16,16 +16,22 @@ header() ->
     end,
     [
         #panel { id=header, style="margin: 10px 100px;", body=[
-            #span { text="Benchmark" },
-            #p{},
+            #h1 { text="Benchmark" },
             LogInOut,
             #p{}
-        ]}
+        ]},
+        #gravatar { email="cobus.carstens@gmail.com",
+                    size="80", 
+                    rating="g", 
+                    default="identicon" 
+                  }
     ].
 
 footer() ->
     [
-        #h3 { id=footer, text="&copy Cobus Carstens" }
+        #panel { id=footer, style="margin: 10px 100px;", body=[
+            #h3 { text="The footer text" }
+            ]}
     ].
 
 event(login) ->
