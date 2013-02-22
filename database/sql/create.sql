@@ -40,7 +40,8 @@ CREATE TABLE user_asset
 (
     user_id BIGINT REFERENCES user(id),
     asset_category_id REFERENCES asset_category(id),
-    value INTEGER NOT NULL DEFAULT 0
+    value INTEGER NOT NULL DEFAULT 0,
+    notes VARCHAR NOT NULL DEFAULT ''
 );
 
 CREATE INDEX user_asset_user_asset_category_index
@@ -56,10 +57,11 @@ CREATE TABLE user_liability
 (
     user_id BIGINT REFERENCES user(id),
     liability_category_id REFERENCES liability_category(id),
-    value INTEGER NOT NULL DEFAULT 0
+    value INTEGER NOT NULL DEFAULT 0,
+    notes VARCHAR NOT NULL DEFAULT ''
 );
 
-CREATE INDEX user_iability_user_liability_category_index
+CREATE INDEX user_liability_user_liability_category_index
 ON user_liability(user_id, liability_category_id);
 
 CREATE INDEX user_liability_user_index

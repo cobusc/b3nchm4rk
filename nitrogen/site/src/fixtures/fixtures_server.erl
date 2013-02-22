@@ -30,6 +30,7 @@
 
 -export_type([category/0, category_list/0, all_fixtures/0]).
 
+-define(POOL, "Somepool"). % @todo Define in header file
 
 start_link() ->
     gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
@@ -84,10 +85,6 @@ code_change(_OldVsn, State, _Extra) ->
 
 
 %%
-%% Worker functions
-%%
-
-%%
 %% @doc Load all fixtures from the database
 %%
 %% This function calls the individual queries to build up a complete fixture representation
@@ -107,8 +104,7 @@ load_all_fixtures() ->
 -spec load_asset_categories() -> {ok, category_list()}.
 
 load_asset_categories() ->
-    % @todo Load from database
-    {ok, []}. 
+    load_categories(<<"asset_category">>).
 
 %%
 %% @doc Load the liability categories
@@ -116,5 +112,19 @@ load_asset_categories() ->
 -spec load_liability_categories() -> {ok, category_list()}.
 
 load_liability_categories() ->
-    % @todo Load from database
-    {ok, []}.
+    load_categories(<<"liability_category">>).
+
+%%
+%% @doc Helper function to load category tables
+%%
+-spec load_categories(TableName::binary()|string()) -> {ok, category_list()}.
+
+load_categories(TableName) ->
+    {ok, Con} = pgsql_pool:get_connection(?POOL, 1000),
+    Sql = [<<"SELECT id, name, description FROM ">>, TableName],
+    {ok, _Cols, AssetCategories} = pgsql:equery(Con, Sql, []),
+    ok = pgsql_pool:return_connection(?POOL, Con),
+    {ok, AssetCategories}.
+
+
+
