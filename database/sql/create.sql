@@ -28,7 +28,7 @@ CREATE TABLE asset_category
     description VARCHAR NOT NULL                          -- A description of the asset category
 );
 
-CREATE TABLE debt_category
+CREATE TABLE liability_category
 (
     id SERIAL PRIMARY KEY,                                -- The debt category ID
     name VARCHAR NOT NULL UNIQUE,                         -- The name of the debt category
@@ -52,20 +52,20 @@ ON user_asset(user_id);
 CREATE INDEX user_asset_asset_category_index
 ON user_asset(asset_category_id);
 
-CREATE TABLE user_depts
+CREATE TABLE user_liability
 (
     user_id BIGINT REFERENCES user(id),
-    debt_type_id REFERENCES debt_type(id),
+    liability_category_id REFERENCES liability_category(id),
     value INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX user_debt_user_debt_category_index
-ON user_debt(user_id, debt_category_id);
+CREATE INDEX user_iability_user_liability_category_index
+ON user_liability(user_id, liability_category_id);
 
-CREATE INDEX user_debt_user_index
-ON user_debt(user_id);
+CREATE INDEX user_liability_user_index
+ON user_liability(user_id);
 
-CREATE INDEX user_debt_debt_category_index
-ON user_debt(debt_category_id);
+CREATE INDEX user_liability_liability_category_index
+ON user_liability(liability_category_id);
 
 
