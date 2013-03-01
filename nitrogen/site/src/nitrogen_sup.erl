@@ -22,6 +22,9 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
+    application:start(epgsql),
+    application:start(epgsql_pool),
+
     %% Start the Process Registry...
     application:start(nprocreg),
 

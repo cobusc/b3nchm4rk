@@ -10,7 +10,7 @@ CREATE DATABASE benchmark
        ENCODING 'UTF8'
        TEMPLATE template0;
 
-CREATE USER benchmark;
+CREATE USER benchmark PASSWORD 'benchmark';
 
 GRANT ALL ON DATABASE benchmark TO benchmark;
 
@@ -120,4 +120,24 @@ ON member_liability(member_id);
 CREATE INDEX member_liability_liability_category_index
 ON member_liability(liability_category_id);
 
+--
+-- Fixtures
+--
 
+INSERT INTO hash_algorithm(name)
+    VALUES ('sha256');
+
+INSERT INTO asset_category(name, description)
+    VALUES ('Property', 'Any type of property, e.g. a house, flat, plot, industrial land, etc.'),
+           ('Investment', 'Any investments, e.g. savings account, money market'),
+           ('Retirement Annuity', 'Retirement Annuity, Providend Fund, etc.'),
+           ('Vehicle' , 'The value of your vehicle'),
+           ('Shares', 'Shares'),
+           ('Unit Trust', 'Unit Trust');
+
+INSERT INTO liability_category(name, description)
+    VALUES ('Bond/Mortgage', 'Money owed on you property'),
+           ('Vehicle Finance', 'Money outstanding w.r.t. your vehicle, including residual'),
+           ('Credit Card', 'Total owed on your credit card'),
+           ('Overdraft', 'Overdraft'),
+           ('Store Credit', 'Amount owed to a store');

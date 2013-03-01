@@ -30,7 +30,7 @@
 
 -export_type([category/0, category_list/0, all_fixtures/0]).
 
--define(POOL, "Somepool"). % @todo Define in header file
+-define(POOL, default_pool). % @todo Define in header file
 
 start_link() ->
     gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
